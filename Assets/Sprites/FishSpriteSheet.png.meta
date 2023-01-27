@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -2162,11 +2162,11 @@ TextureImporter:
       FishSpriteSheet_82: 425118912
       FishSpriteSheet_6: -1170340801
       FishSpriteSheet_45: -649971151
-      FishSpriteSheet_84: -1715858657
       FishSpriteSheet_92: -884813668
       FishSpriteSheet_7: 1860149669
       FishSpriteSheet_81: 962670860
       FishSpriteSheet_61: -1387302346
+      FishSpriteSheet_84: -1715858657
       FishSpriteSheet_30: -1333994131
       FishSpriteSheet_67: -1273319832
       FishSpriteSheet_79: -493373966
@@ -2183,9 +2183,9 @@ TextureImporter:
       FishSpriteSheet_44: 1012522125
       FishSpriteSheet_2: -397633075
       FishSpriteSheet_10: -829336630
+      FishSpriteSheet_72: -1642460479
       FishSpriteSheet_12: 621691048
       FishSpriteSheet_55: 2056434245
-      FishSpriteSheet_72: -1642460479
       FishSpriteSheet_60: 749375276
       FishSpriteSheet_93: -79166431
       FishSpriteSheet_19: 1342311229
@@ -2200,8 +2200,8 @@ TextureImporter:
       FishSpriteSheet_57: -455184172
       FishSpriteSheet_14: -415906903
       FishSpriteSheet_64: 1311064645
-      FishSpriteSheet_20: -101000678
       FishSpriteSheet_27: 529498945
+      FishSpriteSheet_20: -101000678
       FishSpriteSheet_9: 279898301
       FishSpriteSheet_49: -774819090
       FishSpriteSheet_90: -907644483

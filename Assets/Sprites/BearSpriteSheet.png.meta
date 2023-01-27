@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -452,7 +452,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       BearSpriteSheet_8: -1870202748
-      BearSpriteSheet_11: 740030179
+      BearSpriteSheet_3: 436779506
       BearSpriteSheet_12: 1306580235
       BearSpriteSheet_9: 901366496
       BearSpriteSheet_4: -639905105
@@ -466,7 +466,7 @@ TextureImporter:
       BearSpriteSheet_2: 1799385196
       BearSpriteSheet_7: -664132031
       BearSpriteSheet_15: -1666082899
-      BearSpriteSheet_3: 436779506
+      BearSpriteSheet_11: 740030179
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
