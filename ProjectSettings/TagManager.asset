@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Land
+    uniqueID: 495406055
+    locked: 0
+  - name: River
+    uniqueID: 1130086701
+    locked: 0
+  - name: Waterfalls
+    uniqueID: 2375299465
+    locked: 0
+  - name: Fish
+    uniqueID: 3782228903
+    locked: 0
+  - name: Decorations
+    uniqueID: 3959578891
+    locked: 0
+  - name: Bears
+    uniqueID: 1664297787
+    locked: 0
