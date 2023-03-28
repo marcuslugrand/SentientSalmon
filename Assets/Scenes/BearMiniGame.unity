@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
+  lungeLength: 0.3
+  lungeCooldown: 1.5
+  lungeSpeed: 10
 --- !u!50 &18379508
 Rigidbody2D:
   serializedVersion: 4
@@ -20741,8 +20744,8 @@ MonoBehaviour:
   xMax: -11.5
   yMin: -12
   yMax: -10
-  initialSpawnInterval: 3
-  finalSpawnInterval: 1
+  initialSpawnInterval: 1.5
+  finalSpawnInterval: 0.25
   gameTime: 60
   timerText: {fileID: 1171259280}
 --- !u!1001 &1970272979
