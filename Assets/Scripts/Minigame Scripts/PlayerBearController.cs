@@ -57,10 +57,4 @@ public class PlayerBearController : MonoBehaviour
             lungeTimer = lungeLength;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "AI Salmon"){
-            Destroy(other.gameObject);
-        }
-    }
 }
