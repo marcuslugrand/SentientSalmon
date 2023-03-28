@@ -31,4 +31,10 @@ public class PlayerBearController : MonoBehaviour
 
         rb.velocity = new Vector2(horizontal, vertical).normalized * moveSpeed;
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "AI Salmon"){
+            Destroy(other.gameObject);
+        }
+    }
 }
