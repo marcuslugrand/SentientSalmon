@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1694967051}
   - component: {fileID: 1694967050}
   m_Layer: 0
-  m_Name: PlayerSalmon
+  m_Name: MapTestingSalmon
   m_TagString: AI Salmon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

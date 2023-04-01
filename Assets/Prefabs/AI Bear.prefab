@@ -158,5 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salmonTag: AI Salmon
-  spottingRange: 7
+  spottingRange: 9
   speed: 1
