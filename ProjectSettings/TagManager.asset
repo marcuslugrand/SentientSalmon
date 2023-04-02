@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AI Salmon
+  - AI Bear
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -58,4 +61,7 @@ TagManager:
     locked: 0
   - name: Bears
     uniqueID: 1664297787
+    locked: 0
+  - name: UI
+    uniqueID: 629236037
     locked: 0
