@@ -133,6 +133,7 @@ public class CarController : MonoBehaviour
 
         if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY)
         {
+            Debug.Log("time exceeded to reach checkpoint");
             Die();
         }
     }
