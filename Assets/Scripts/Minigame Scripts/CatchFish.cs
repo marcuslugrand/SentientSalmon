@@ -6,7 +6,7 @@ public class CatchFish : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text scoreText;
-    private int score;
+    [HideInInspector] public int score;
 
     void Start(){
         score = 0;
