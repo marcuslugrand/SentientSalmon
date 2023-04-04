@@ -32,7 +32,7 @@ public class SimSettings : MonoBehaviour
 
     public void ChangeSliderValue(Slider slider)
     {
-        Debug.Log(slider.value);
+        Debug.Log((int)slider.value);
     }
 
     public void ChangeDropdownValue(TMP_Dropdown dropdown)
