@@ -21,11 +21,11 @@ public class TrackManager : MonoBehaviour
 
     // Sprites for visualising best and second best cars. To be set in Unity Editor.
     [SerializeField]
-    private Sprite BestCarSprite;
+    private GameObject BestCarSprite;
     [SerializeField]
-    private Sprite SecondBestSprite;
+    private GameObject SecondBestSprite;
     [SerializeField]
-    private Sprite NormalCarSprite;
+    private GameObject NormalCarSprite;
 
     private Checkpoint[] checkpoints;
 
@@ -72,9 +72,9 @@ public class TrackManager : MonoBehaviour
             {
                 //Update appearance
                 if (BestCar != null)
-                    BestCar.SpriteRenderer.sprite = NormalCarSprite;
+                    BestCar.SpriteRenderer.sprite = NormalCarSprite.GetComponent<SpriteRenderer>().sprite;
                 if (value != null)
-                    value.SpriteRenderer.sprite = BestCarSprite;
+                    value.SpriteRenderer.sprite = BestCarSprite.GetComponent<SpriteRenderer>().sprite;
 
                 //Set previous best to be second best now
                 CarController previousBest = bestCar;
@@ -104,9 +104,9 @@ public class TrackManager : MonoBehaviour
             {
                 //Update appearance of car
                 if (SecondBestCar != null && SecondBestCar != BestCar)
-                    SecondBestCar.SpriteRenderer.sprite = NormalCarSprite;
+                    SecondBestCar.SpriteRenderer.sprite = NormalCarSprite.GetComponent<SpriteRenderer>().sprite;
                 if (value != null)
-                    value.SpriteRenderer.sprite = SecondBestSprite;
+                    value.SpriteRenderer.sprite = SecondBestSprite.GetComponent<SpriteRenderer>().sprite;
 
                 secondBestCar = value;
                 if (SecondBestCarChanged != null)
@@ -146,6 +146,8 @@ public class TrackManager : MonoBehaviour
         //Get all checkpoints
         checkpoints = GetComponentsInChildren<Checkpoint>();
 
+        Debug.Log("# of checkpoints: " + checkpoints.Length);
+        Debug.Log("Location of first checkpoint: " + checkpoints[0].transform.position);
         //Set start position and hide prototype
         startPosition = PrototypeCar.transform.position;
         startRotation = PrototypeCar.transform.rotation;
@@ -258,7 +260,8 @@ public class TrackManager : MonoBehaviour
 
         //Set track length to accumulated distance of last checkpoint
         TrackLength = checkpoints[checkpoints.Length - 1].AccumulatedDistance;
-        
+        Debug.Log("Track length: " + TrackLength);
+       
         //Calculate reward value for each checkpoint
         for (int i = 1; i < checkpoints.Length; i++)
         {
@@ -277,6 +280,7 @@ public class TrackManager : MonoBehaviour
 
         //Calculate distance to next checkpoint
         float checkPointDistance = Vector2.Distance(car.transform.position, checkpoints[curCheckpointIndex].transform.position);
+       // Debug.Log("Distance to next checkpoint: " + checkPointDistance);
 
         //Check if checkpoint can be captured
         if (checkPointDistance <= checkpoints[curCheckpointIndex].CaptureRadius)

@@ -15,9 +15,10 @@ TagManager:
   - Water
   - UI
   - 
-  - Player
-  - GameBounds
+
   - 
+  - Wall
+  - Salmon
   - 
   - 
   - 

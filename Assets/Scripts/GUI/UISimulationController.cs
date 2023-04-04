@@ -6,6 +6,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System;
+using TMPro;
 #endregion
 
 /// <summary>
@@ -27,21 +28,20 @@ public class UISimulationController : MonoBehaviour
             {
                 target = value;
 
-                if (target != null)
-                    NeuralNetPanel.Display(target.Agent.FNN);
+                //if (target != null) NeuralNetPanel.Display(target.Agent.FNN);
             }
         }
     }
 
     // GUI element references to be set in Unity Editor.
     [SerializeField]
-    private Text[] InputTexts;
+    private TextMeshProUGUI[] InputTexts;
     [SerializeField]
-    private Text Evaluation;
+    private TextMeshProUGUI Evaluation;
     [SerializeField]
-    private Text GenerationCount;
-    [SerializeField]
-    private UINeuralNetworkPanel NeuralNetPanel;
+    private TextMeshProUGUI GenerationCount;
+    //[SerializeField]
+    //private UINeuralNetworkPanel NeuralNetPanel;
     #endregion
 
     #region Constructors

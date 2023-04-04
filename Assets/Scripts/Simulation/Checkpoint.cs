@@ -80,8 +80,8 @@ public class Checkpoint : MonoBehaviour
     {
         //Calculate how close the distance is to capturing this checkpoint, relative to the distance from the previous checkpoint
         float completePerc = (DistanceToPrevious - currentDistance) / DistanceToPrevious; 
+       // Debug.Log("close distance: " + completePerc);
 
-        //Reward according to capture percentage
         if (completePerc < 0)
             return 0;
         else return completePerc * RewardValue;
