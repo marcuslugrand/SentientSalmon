@@ -28,6 +28,7 @@ public class TrackManager : MonoBehaviour
     private GameObject NormalCarSprite;
 
     private Checkpoint[] checkpoints;
+    public BearController[] bears;
 
     /// <summary>
     /// Car used to create new cars and to set start position.
@@ -145,9 +146,8 @@ public class TrackManager : MonoBehaviour
 
         //Get all checkpoints
         checkpoints = GetComponentsInChildren<Checkpoint>();
+        bears = GetComponentsInChildren<BearController>();
 
-        Debug.Log("# of checkpoints: " + checkpoints.Length);
-        Debug.Log("Location of first checkpoint: " + checkpoints[0].transform.position);
         //Set start position and hide prototype
         startPosition = PrototypeCar.transform.position;
         startRotation = PrototypeCar.transform.rotation;
@@ -229,6 +229,12 @@ public class TrackManager : MonoBehaviour
             car.Car.transform.rotation = startRotation;
             car.Car.Restart();
             car.CheckpointIndex = 1;
+        }
+
+        // reset bear spawns to initial location
+        foreach (BearController bear in bears)
+        {
+            bear.transform.position = bear.startingPosition;
         }
 
         BestCar = null;

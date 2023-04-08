@@ -11,19 +11,26 @@ public class BearController : MonoBehaviour {
     private float closestDistance;
     private Rigidbody2D rb;
     private Animator anim;
+    public Vector3 startingPosition { get; set; }
 
     private static readonly int HorizontalVelocityHash = Animator.StringToHash("HorizontalVelocity");
     private static readonly int VerticalVelocityHash = Animator.StringToHash("VerticalVelocity");
+
+    // Awake() called before Start(). Need this for setting spawn locations
+    void Awake()
+    {
+        startingPosition = GetComponent<Transform>().position; 
+    }
 
     void Start() {
         salmonObjects = GameObject.FindGameObjectsWithTag(salmonTag);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
         // call the FindClosestSalmon function once every second
         InvokeRepeating(nameof(FindClosestSalmon), 0f, 0.5f);
     }
 
+    // OnEnable() sets values saved in sim settings. in this case the speed and spotting range of the bear AI
     void OnEnable()
     {
         speed = PlayerPrefs.GetFloat("bearSpeed", 1f);
