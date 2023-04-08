@@ -103,9 +103,14 @@ public class CarController : MonoBehaviour
         Movement.enabled = true;
         timeSinceLastCheckpoint = 0;
 
+        // this is for setting gameobjects
         foreach (Sensor s in sensors)
             s.Show();
 
+        // and this is for making the sensors invisible
+        foreach (Sensor s in sensors)
+            s.IsVisible = false;
+        
         Agent.Reset();
         this.enabled = true;
     }
