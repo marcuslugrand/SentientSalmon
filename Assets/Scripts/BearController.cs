@@ -24,6 +24,12 @@ public class BearController : MonoBehaviour {
         InvokeRepeating(nameof(FindClosestSalmon), 0f, 0.5f);
     }
 
+    void OnEnable()
+    {
+        speed = PlayerPrefs.GetFloat("bearSpeed", 1f);
+        spottingRange = PlayerPrefs.GetFloat("spottingRange", 9f);
+    }
+
     private void FindClosestSalmon() {
         //salmonObjects = GameObject.FindGameObjectsWithTag(salmonTag);
 

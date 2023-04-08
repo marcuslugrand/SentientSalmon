@@ -18,10 +18,10 @@ public class CarMovement : MonoBehaviour
     public event System.Action HitWall;
 
     //Movement constants
-    private const float MAX_VEL = 20f;
-    private const float ACCELERATION = 8f;
-    private const float VEL_FRICT = 2f;
-    private const float TURN_SPEED = 100;
+    private float MAX_VEL = 20f;
+    private float ACCELERATION = 8f;
+    private float VEL_FRICT = 2f;
+    private float TURN_SPEED = 100;
 
     private CarController controller;
 
@@ -57,6 +57,12 @@ public class CarMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CarController>();
+    }
+
+    void OnEnable()
+    {
+        MAX_VEL = PlayerPrefs.GetFloat("salmonMaxSpeed", 20f);
+        VEL_FRICT = PlayerPrefs.GetFloat("currentResistance", 2f);
     }
     #endregion
 
