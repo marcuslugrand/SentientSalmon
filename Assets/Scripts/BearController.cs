@@ -43,8 +43,12 @@ public class BearController : MonoBehaviour {
         closestDistance = Mathf.Infinity;
 
         foreach (GameObject salmonObject in salmonObjects) {
-            float distance = Vector3.Distance(transform.position, salmonObject.transform.position);
 
+            CarController controller = salmonObject.GetComponent<CarController>();
+            if (!controller.Agent.IsAlive)
+                continue;
+
+            float distance = Vector3.Distance(transform.position, salmonObject.transform.position);
             if (distance < closestDistance) {
 
                 closestDistance = distance;
