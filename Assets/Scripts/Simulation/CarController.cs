@@ -87,7 +87,7 @@ public class CarController : MonoBehaviour
     }
     void Start()
     {
-        Movement.HitWall += Die;
+        Movement.DieEvent += Die;
 
         //Set name to be unique
         this.name = "Car (" + NextID + ")";
@@ -101,6 +101,7 @@ public class CarController : MonoBehaviour
     public void Restart()
     {
         Movement.enabled = true;
+        SpriteRenderer.enabled = true; // make fish visible again
         timeSinceLastCheckpoint = 0;
 
         // this is for setting gameobjects
@@ -139,16 +140,18 @@ public class CarController : MonoBehaviour
         if (timeSinceLastCheckpoint > MAX_CHECKPOINT_DELAY)
         {
             Debug.Log("time exceeded to reach checkpoint");
-            Die();
+            Die(); // should change to a different color I think which indicates it took too long
         }
     }
 
     // Makes this car die (making it unmovable and stops the Agent from calculating the controls for the car).
     private void Die()
     {
+        Debug.Log("The salmon died :(");
         this.enabled = false;
         Movement.Stop();
         Movement.enabled = false;
+        SpriteRenderer.enabled = false; // make invisible, but maybe change its color?
 
         foreach (Sensor s in sensors)
             s.Hide();
