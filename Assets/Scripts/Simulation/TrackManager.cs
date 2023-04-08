@@ -292,7 +292,7 @@ public class TrackManager : MonoBehaviour
         if (checkPointDistance <= checkpoints[curCheckpointIndex].CaptureRadius)
         {
             curCheckpointIndex++;
-            car.CheckpointCaptured(); //Inform car that it captured a checkpoint
+            car.CheckpointCaptured(curCheckpointIndex - 1); //Inform car that it captured a checkpoint
             return GetCompletePerc(car, ref curCheckpointIndex); //Recursively check next checkpoint
         }
         else

@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToSense:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16
   Cross: {fileID: 7860939628143329437}
 --- !u!1 &5552746919454561358
 GameObject:
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToSense:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16
   Cross: {fileID: 5107104277677063451}
 --- !u!1 &6283001327305882602
 GameObject:
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToSense:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16
   Cross: {fileID: 5780132826372327848}
 --- !u!1 &6806964868983393303
 GameObject:
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToSense:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16
   Cross: {fileID: 5285083853412812546}
 --- !u!1 &6833213302666927903
 GameObject:
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToSense:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 16
   Cross: {fileID: 7327271909968977818}
 --- !u!1 &7476187719320007647
 GameObject:
