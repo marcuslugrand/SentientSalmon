@@ -40,6 +40,8 @@ public class EvolutionManager : MonoBehaviour
     [SerializeField]
     private int RestartAfter = 100;
 
+    public int totalGenerationCount = 100; //  not sure if we should expose this
+
     // Whether to use elitist selection or remainder stochastic sampling, to be set in Unity Editor
     [SerializeField]
     private bool ElitistSelection = false;
