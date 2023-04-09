@@ -302,8 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveStatistics: 0
   SaveFirstNGenotype: 0
-  PopulationSize: 30
-  RestartAfter: 100
+  totalGenerationCount: 10
   ElitistSelection: 1
   FNNTopology: 05000000040000000300000002000000
 --- !u!4 &1855074236
