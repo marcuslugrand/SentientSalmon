@@ -75,6 +75,11 @@ public class EvolutionManager : MonoBehaviour
     {
         get { return geneticAlgorithm.GenerationCount; }
     }
+
+    public float averageEvaluation
+    {
+        get; set;
+    }
     #endregion
 
     #region Constructors
