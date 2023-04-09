@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartButton()
+    public void TrainButton()
     {
         SceneManager.LoadScene("MainScene");
+    }
+    public void PlayButton()
+    {
+        SceneManager.LoadScene("BearMiniGame");
     }
 
     public void ExitButton()
