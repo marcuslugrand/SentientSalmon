@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-    public void PlayButton()
+    public void MiniGameButton()
     {
         SceneManager.LoadScene("BearMiniGame");
     }
