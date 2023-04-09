@@ -36,11 +36,7 @@ public class EvolutionManager : MonoBehaviour
     // Population size, to be set in Unity Editor
     private int PopulationSize;
 
-    // After how many generations should the genetic algorithm be restart (0 for never), to be set in Unity Editor
-    [SerializeField]
-    private int RestartAfter = 100;
-
-    public int totalGenerationCount = 100; //  not sure if we should expose this
+    public int totalGenerationCount = 10; //  not sure if we should expose this
 
     // Whether to use elitist selection or remainder stochastic sampling, to be set in Unity Editor
     [SerializeField]
@@ -49,6 +45,10 @@ public class EvolutionManager : MonoBehaviour
     // Topology of the agent's FNN, to be set in Unity Editor
     [SerializeField]
     private uint[] FNNTopology;
+
+    // menu game object that is displayed once the training is over
+    [SerializeField]
+    private GameObject endTrainingMenu;
 
     // The current population of agents.
     private List<Agent> agents = new List<Agent>();
@@ -75,6 +75,11 @@ public class EvolutionManager : MonoBehaviour
     {
         get { return geneticAlgorithm.GenerationCount; }
     }
+
+    public float averageEvaluation
+    {
+        get; set;
+    }
     #endregion
 
     #region Constructors
@@ -86,6 +91,9 @@ public class EvolutionManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        // hide end training menu
+        endTrainingMenu.SetActive(false);
     }
 
     void OnEnable()
@@ -136,7 +144,7 @@ public class EvolutionManager : MonoBehaviour
         geneticAlgorithm.FitnessCalculationFinished += CheckForTrackFinished;
 
         //Restart logic
-        if (RestartAfter > 0)
+        if (totalGenerationCount > 0)
         {
             geneticAlgorithm.TerminationCriterion += CheckGenerationTermination;
             geneticAlgorithm.AlgorithmTerminated += OnGATermination;
@@ -192,7 +200,7 @@ public class EvolutionManager : MonoBehaviour
     // Checks whether the termination criterion of generation count was met.
     private bool CheckGenerationTermination(IEnumerable<Genotype> currentPopulation)
     {
-        return geneticAlgorithm.GenerationCount >= RestartAfter;
+        return geneticAlgorithm.GenerationCount >= totalGenerationCount;
     }
 
     // To be called when the genetic algorithm was terminated
@@ -200,7 +208,11 @@ public class EvolutionManager : MonoBehaviour
     {
         AllAgentsDied -= ga.EvaluationFinished;
 
-        RestartAlgorithm(5.0f);
+        // rather than restarting, we just end
+        Debug.Log("Training Over.");
+
+        // prompt the end of sim menu
+        endTrainingMenu.SetActive(true);
     }
 
     // Restarts the algorithm after a specific wait time second wait

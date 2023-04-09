@@ -279,7 +279,9 @@ public class GeneticAlgorithm
         }
 
         float averageEvaluation = overallEvaluation / populationSize;
-
+        UnityEngine.Debug.Log("average evaluation is: " + averageEvaluation);
+        EvolutionManager.Instance.averageEvaluation = averageEvaluation;
+        
         //Now assign fitness with formula fitness = evaluation / averageEvaluation
         foreach (Genotype genotype in currentPopulation)
             genotype.Fitness = genotype.Evaluation / averageEvaluation;

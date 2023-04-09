@@ -40,6 +40,10 @@ public class UISimulationController : MonoBehaviour
     private TextMeshProUGUI Evaluation;
     [SerializeField]
     private TextMeshProUGUI GenerationCount;
+
+    // track average distance of total track a fish is traveling
+    private float averageDistance;
+    private uint generationCount;
     //[SerializeField]
     //private UINeuralNetworkPanel NeuralNetPanel;
     #endregion
@@ -47,7 +51,9 @@ public class UISimulationController : MonoBehaviour
     #region Constructors
     void Awake()
     {
-
+        averageDistance = 0;
+        Evaluation.text = "";
+        generationCount = 1;
     }
     #endregion
 
@@ -63,9 +69,13 @@ public class UISimulationController : MonoBehaviour
                     InputTexts[i].text = Target.CurrentControlInputs[i].ToString();
             }
 
-            //Display evaluation and generation count
-            Evaluation.text = Target.Agent.Genotype.Evaluation.ToString();
-            // how to make this out of the # total?
+            if (generationCount < EvolutionManager.Instance.GenerationCount)
+            {
+                averageDistance += EvolutionManager.Instance.averageEvaluation;
+                Evaluation.text = ((averageDistance / generationCount) * 100).ToString("N2"); // only show 10^2 precision
+                generationCount = EvolutionManager.Instance.GenerationCount;
+            }
+            
             GenerationCount.text = EvolutionManager.Instance.GenerationCount.ToString() + "/" + EvolutionManager.Instance.totalGenerationCount.ToString();
         }
     }
