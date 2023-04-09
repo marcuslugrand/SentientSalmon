@@ -46,6 +46,10 @@ public class EvolutionManager : MonoBehaviour
     [SerializeField]
     private uint[] FNNTopology;
 
+    // menu game object that is displayed once the training is over
+    [SerializeField]
+    private GameObject endTrainingMenu;
+
     // The current population of agents.
     private List<Agent> agents = new List<Agent>();
     /// <summary>
@@ -82,6 +86,9 @@ public class EvolutionManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        // hide end training menu
+        endTrainingMenu.SetActive(false);
     }
 
     void OnEnable()
@@ -198,7 +205,9 @@ public class EvolutionManager : MonoBehaviour
 
         // rather than restarting, we just end
         Debug.Log("Training Over.");
-        // RestartAlgorithm(5.0f);
+
+        // prompt the end of sim menu
+        endTrainingMenu.SetActive(true);
     }
 
     // Restarts the algorithm after a specific wait time second wait
