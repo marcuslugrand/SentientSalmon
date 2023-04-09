@@ -17,6 +17,7 @@ public class Sensor : MonoBehaviour
     //The crosshair of the sensor, to be set in Unity editor.
     [SerializeField]
     private SpriteRenderer Cross;
+    private SpriteRenderer spriteRenderer;
 
     // Max and min readings
     private const float MAX_DIST = 10f;
@@ -33,6 +34,10 @@ public class Sensor : MonoBehaviour
     #endregion
 
     #region Constructors
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Start ()
     {
         Cross.gameObject.SetActive(true);
@@ -74,6 +79,13 @@ public class Sensor : MonoBehaviour
     public void Show()
     {
         Cross.gameObject.SetActive(true);
+    }
+
+    // sets sprite to render (or not)
+    public bool IsVisible
+    {
+        get { return spriteRenderer.enabled; }
+        set { spriteRenderer.enabled = value; }
     }
     #endregion
 }

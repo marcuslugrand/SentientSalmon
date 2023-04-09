@@ -13,15 +13,15 @@ public class CarMovement : MonoBehaviour
 {
     #region Members
     /// <summary>
-    /// Event for when the car hit a wall.
+    /// Event for when the car will die.
     /// </summary>
-    public event System.Action HitWall;
+    public event System.Action DieEvent;
 
     //Movement constants
-    private const float MAX_VEL = 20f;
-    private const float ACCELERATION = 8f;
-    private const float VEL_FRICT = 2f;
-    private const float TURN_SPEED = 100;
+    private float MAX_VEL = 20f;
+    private float ACCELERATION = 8f;
+    private float VEL_FRICT = 2f;
+    private float TURN_SPEED = 100;
 
     private CarController controller;
 
@@ -57,6 +57,12 @@ public class CarMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CarController>();
+    }
+
+    void OnEnable()
+    {
+        MAX_VEL = PlayerPrefs.GetFloat("salmonMaxSpeed", 20f);
+        VEL_FRICT = PlayerPrefs.GetFloat("currentResistance", 2f);
     }
     #endregion
 
@@ -161,10 +167,21 @@ public class CarMovement : MonoBehaviour
     }
 
     // Unity method, triggered when collision was detected.
-    void OnCollisionEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (HitWall != null)
-            HitWall();
+        
+        if (DieEvent != null)
+            DieEvent();
+
+        // hit the boundary of the water/land tiles, stop movement, but keep alive
+        //if (collision.collider.name == "Water")
+        //{
+        //    Stop();
+        //}
+
+        // we collide with a bear, so salmon dies
+        //else if (DieEvent != null && collision.collider.name != "Water")
+        //    DieEvent();
     }
 
     /// <summary>

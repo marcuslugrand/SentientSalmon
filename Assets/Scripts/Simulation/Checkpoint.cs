@@ -15,7 +15,7 @@ public class Checkpoint : MonoBehaviour
     /// <summary>
     /// The radius in Unity units in which this checkpoint can be captured.
     /// </summary>
-    public float CaptureRadius = 3;
+    public float CaptureRadius = 5;
     private SpriteRenderer spriteRenderer;
 
     /// <summary>

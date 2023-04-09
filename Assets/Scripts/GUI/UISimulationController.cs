@@ -65,7 +65,8 @@ public class UISimulationController : MonoBehaviour
 
             //Display evaluation and generation count
             Evaluation.text = Target.Agent.Genotype.Evaluation.ToString();
-            GenerationCount.text = EvolutionManager.Instance.GenerationCount.ToString();
+            // how to make this out of the # total?
+            GenerationCount.text = EvolutionManager.Instance.GenerationCount.ToString() + "/" + EvolutionManager.Instance.totalGenerationCount.ToString();
         }
     }
 

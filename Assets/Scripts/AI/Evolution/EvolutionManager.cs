@@ -34,12 +34,13 @@ public class EvolutionManager : MonoBehaviour
     private uint genotypesSaved = 0;
 
     // Population size, to be set in Unity Editor
-    [SerializeField]
-    private int PopulationSize = 30;
+    private int PopulationSize;
 
     // After how many generations should the genetic algorithm be restart (0 for never), to be set in Unity Editor
     [SerializeField]
     private int RestartAfter = 100;
+
+    public int totalGenerationCount = 100; //  not sure if we should expose this
 
     // Whether to use elitist selection or remainder stochastic sampling, to be set in Unity Editor
     [SerializeField]
@@ -85,6 +86,11 @@ public class EvolutionManager : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    void OnEnable()
+    {
+        PopulationSize = PlayerPrefs.GetInt("popCount", 30);
     }
     #endregion
 

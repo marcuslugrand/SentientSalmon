@@ -18,6 +18,7 @@ public class SimSettings : MonoBehaviour
     public TextMeshProUGUI bearAggressionValueText;
     public TextMeshProUGUI currentResistanceValueText;
     public string[] mapNames = {"Autumn Map", "Spring Map", "Winter Map"};
+
     void Start()
     {
        // add listeners to sliders; invoke methods when value of slider changes 
@@ -51,5 +52,19 @@ public class SimSettings : MonoBehaviour
     public void ChangeDropdownValue(TMP_Dropdown dropdown)
     {
         Debug.Log(mapNames[dropdown.value]);
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("Value of popCount: " + (int)popCountSlider.value);
+        Debug.Log("Value of salmonMaxSpeed: " + (int)salmonMaxSpeedSlider.value);
+        Debug.Log("Value of currentResistance " + (int)currentResistanceSlider.value);
+        Debug.Log("Value of bearSpeed: " + (int)bearSpeedSlider.value);
+        Debug.Log("Value of spottingRange: " + (int)bearAggressionSlider.value);
+        PlayerPrefs.SetInt("popCount", (int)popCountSlider.value);
+        PlayerPrefs.SetFloat("salmonMaxSpeed", (int)salmonMaxSpeedSlider.value);
+        PlayerPrefs.SetFloat("currentResistance", (int)currentResistanceSlider.value);
+        PlayerPrefs.SetFloat("bearSpeed", (int)bearSpeedSlider.value);
+        PlayerPrefs.SetFloat("spottingRange", (int)bearAggressionSlider.value);
     }
 }
