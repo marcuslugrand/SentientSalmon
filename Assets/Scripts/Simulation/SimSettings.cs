@@ -69,7 +69,7 @@ public class SimSettings : MonoBehaviour
         PlayerPrefs.SetFloat("spottingRange", (int)bearAggressionSlider.value);
     }
 
-    public void StartTraining()
+    public void StartTrainingButton()
     {
         if (mapNames[mapSelection.value] == "Autumn Map")
         {
