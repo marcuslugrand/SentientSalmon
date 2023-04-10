@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class SimSettings : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -66,5 +67,21 @@ public class SimSettings : MonoBehaviour
         PlayerPrefs.SetFloat("currentResistance", (int)currentResistanceSlider.value);
         PlayerPrefs.SetFloat("bearSpeed", (int)bearSpeedSlider.value);
         PlayerPrefs.SetFloat("spottingRange", (int)bearAggressionSlider.value);
+    }
+
+    public void StartTrainingButton()
+    {
+        if (mapNames[mapSelection.value] == "Autumn Map")
+        {
+            SceneManager.LoadScene("Map - Autumn Falls");
+        }
+        else if (mapNames[mapSelection.value] == "Spring Map")
+        {
+            SceneManager.LoadScene("Map - The Lazy Summer");
+        }
+        else if (mapNames[mapSelection.value] == "Winter Map")
+        {
+            SceneManager.LoadScene("Map - Icy Islands");
+        }
     }
 }
