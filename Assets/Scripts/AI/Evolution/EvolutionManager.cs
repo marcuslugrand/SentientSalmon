@@ -99,7 +99,10 @@ public class EvolutionManager : MonoBehaviour
         Instance = this;
 
         // hide end training menu
-        endTrainingMenu.SetActive(false);
+        if (endTrainingMenu != null)
+        {
+            endTrainingMenu.SetActive(false);
+        }
     }
 
     void OnEnable()
@@ -108,12 +111,24 @@ public class EvolutionManager : MonoBehaviour
         saveParameters = PlayerPrefs.GetString("saveParameters", "");
 
         if (saveParameters == "")
-        {
-            Debug.Log("no saved fish parameters found.");
+        { 
+            if (isMiniGame)
+            {
+                Debug.Log("no saved fish parameters found.");
+            }
+            else {
+                Debug.Log("this isnt a minigame, we dont need to load fish parameters");
+            }
         }
         else
         {
-            Debug.Log("Loading these parameters:\n" + saveParameters);
+            if (isMiniGame)
+            {
+                Debug.Log("Loading these parameters for the MiniGame:\n" + saveParameters);
+            }
+            else {
+                Debug.Log("This isnt a minigame, we dont need to load fish parameters");
+            }
         }
     }
 
@@ -253,7 +268,10 @@ public class EvolutionManager : MonoBehaviour
         Debug.Log("Training Over.");
 
         // prompt the end of sim menu
-        endTrainingMenu.SetActive(true);
+        if (endTrainingMenu != null)
+        {
+            endTrainingMenu.SetActive(true);
+        }
     }
 
     // Restarts the algorithm after a specific wait time second wait
