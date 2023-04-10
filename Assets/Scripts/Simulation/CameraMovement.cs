@@ -12,6 +12,18 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     #region Members
+    //X max bounds
+    [SerializeField]
+    private float xMax = 40;
+    //X min bounds
+    [SerializeField]
+    private float xMin = -42;
+    //Y max bounds
+    [SerializeField]
+    private float yMax = 160;
+    //Y min bounds
+    [SerializeField]
+    private float yMin = -35;
     // Distance of Camera to target in Z direction, to be set in Unity Editor.
     [SerializeField]
     private int CamZ = -10;
@@ -47,6 +59,7 @@ public class CameraMovement : MonoBehaviour
     /// <param name="target">The target to follow.</param>
     public void SetTarget(GameObject target)
     {
+        
         //Set position instantly if previous target was null
         if (Target == null && !AllowUserInput && target != null)
             SetCamPosInstant(target.transform.position);
@@ -57,6 +70,7 @@ public class CameraMovement : MonoBehaviour
     // Unity method for updating the simulation
 	void FixedUpdate ()
     {
+        
         //Check movement direction
         if (AllowUserInput)
             CheckUserInput();
@@ -64,7 +78,34 @@ public class CameraMovement : MonoBehaviour
             targetCamPos = Target.transform.position;
 
         targetCamPos.z = CamZ; //Always set z to cam distance
-        this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+
+        //Camera Bounds
+        if(targetCamPos.y > yMax){
+            targetCamPos.y = yMax;
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+            //print("Check If targetCamPos");
+        }
+        else if(targetCamPos.y < yMin){
+            targetCamPos.y = yMin;
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+            //print("Check If targetCamPos");
+        }
+        else if(targetCamPos.y > xMax){
+            targetCamPos.x = xMax;
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+            //print("Check If targetCamPos");
+        }
+        else if(targetCamPos.y < xMin){
+            targetCamPos.x = yMin;
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+            //print("Check If targetCamPos");
+        }
+        else{
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+        }
+
+        //OLD
+        //this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
 
         //Check if out of bounds
         if (MovementBounds != null)
@@ -92,6 +133,7 @@ public class CameraMovement : MonoBehaviour
             {
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - upDiff, this.transform.position.z);
                 targetCamPos.y = this.transform.position.y;
+                
             }
             else if (downDiff < 0)
             {
