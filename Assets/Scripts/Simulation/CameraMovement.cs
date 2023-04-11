@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     private float xMax = 40;
     //X min bounds
     [SerializeField]
-    private float xMin = -42;
+    private float xMin = -40;
     //Y max bounds
     [SerializeField]
     private float yMax = 160;
@@ -80,25 +80,27 @@ public class CameraMovement : MonoBehaviour
         targetCamPos.z = CamZ; //Always set z to cam distance
 
         //Camera Bounds
-        if(targetCamPos.y > yMax){
-            targetCamPos.y = yMax;
-            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
-            //print("Check If targetCamPos");
-        }
-        else if(targetCamPos.y < yMin){
-            targetCamPos.y = yMin;
-            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
-            //print("Check If targetCamPos");
-        }
-        else if(targetCamPos.y > xMax){
-            targetCamPos.x = xMax;
-            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
-            //print("Check If targetCamPos");
-        }
-        else if(targetCamPos.y < xMin){
-            targetCamPos.x = yMin;
-            this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
-            //print("Check If targetCamPos");
+        if(targetCamPos.y > yMax || targetCamPos.y < yMin || targetCamPos.x > xMax || targetCamPos.x < xMin){
+            if(targetCamPos.y > yMax){
+                targetCamPos.y = yMax;
+                this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+                //print("Check If targetCamPos");
+            }
+            if(targetCamPos.y < yMin){
+                targetCamPos.y = yMin;
+                this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+                //print("Check If targetCamPos");
+            }
+            if(targetCamPos.x > xMax){
+                targetCamPos.x = xMax;
+                this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+                //print("Check If targetCamPos");
+            }
+            if(targetCamPos.x < xMin){
+                targetCamPos.x = yMin;
+                this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
+                //print("Check If targetCamPos");
+            }
         }
         else{
             this.transform.position = Vector3.Lerp(this.transform.position, targetCamPos, CamSpeed * Time.deltaTime); //Move camera with interpolation
