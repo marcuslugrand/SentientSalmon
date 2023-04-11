@@ -120,6 +120,12 @@ public class CameraMovement : MonoBehaviour
             float upDiff = (this.transform.position.y + vertExtent) - (MovementBounds.position.y + MovementBounds.rect.height / 2);
             float downDiff = (this.transform.position.y - vertExtent) - (MovementBounds.position.y - MovementBounds.rect.height / 2);
 
+            print("Check rightDiff");
+            print(rightDiff);
+            
+            print("Check leftDiff");
+            print(leftDiff);
+
             if (rightDiff > 0)
             {
                 this.transform.position = new Vector3(this.transform.position.x - rightDiff, this.transform.position.y, this.transform.position.z);
