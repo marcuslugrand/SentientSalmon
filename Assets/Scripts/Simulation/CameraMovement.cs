@@ -14,10 +14,10 @@ public class CameraMovement : MonoBehaviour
     #region Members
     //X max bounds
     [SerializeField]
-    private float xMax = 40;
+    private float xMax = 15;
     //X min bounds
     [SerializeField]
-    private float xMin = -40;
+    private float xMin = -15;
     //Y max bounds
     [SerializeField]
     private float yMax = 160;
